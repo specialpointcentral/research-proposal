@@ -1,0 +1,53 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{url}
+
+\usepackage{hyperref}
+\hypersetup
+{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=blue,
+  urlcolor=blue,
+  citecolor=green,
+}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Hrule}{\rule{\linewidth}{0.3mm}}
+
+\renewcommand{\baselinestretch}{1.25}
+
+\newcommand\keywords[1]{\textbf{Keywords}: #1}
+
+% \makeatletter% since there's an at-sign (@) in the command name
+% \renewcommand{\@maketitle}{%
+%   \parindent=0pt% don't indent paragraphs in the title block
+%   \centering
+%   {\Large \bfseries\textsc{\@title}}
+%   \HRule\par%
+%   \textit{\@author \hfill \@date}
+%   \par
+% }
+% \makeatother% resets the meaning of the at-sign (@)
+
+\title{Compatibility of trusted computing}
+\author{Qi Hu}
+\date{01/11/2022}
+
+\begin{document}
+  \maketitle% prints the title block
+  \keywords{Trusted Computing, Distribute System, Software-hardware Co-optimization.}
+
+  \input{body/introduction.tex}
+  \input{body/research_objectives.tex}
+  \input{body/background_of_research.tex}
+  \input{body/research_plan_and_methodology.tex}
+  \input{body/expected_outcomes_and_significance.tex}
+  \input{body/study_schedule.tex}
+
+  \bibliographystyle{acm}
+  \bibliography{reference}
+
+\end{document}

@@ -1,0 +1,7 @@
+compile_pdf:
+  image: aergus/latex
+  script:
+    - make research_proposal.pdf
+  artifacts:
+    paths:
+      - research_proposal.pdf
