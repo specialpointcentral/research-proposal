@@ -38,6 +38,27 @@ after automatic analysis by Glamdring \cite{Lind2017GlamdringAA} in order to obt
 an accurate analysis.
 
 \subsection{Design a binary rewriting tool to protect confidential code and data}
+With the help of analysis tools, it is easy to obtain the code segments that need
+to be protected and the memory areas where important data is located.
+
+\textbf{Code protection}. For code segments that need to be protected,
+we can use the Minimal-invasive translation method. Similar to the rev.ng \cite{Federico2017revngAU}
+and pin \cite{Luk2005PinBC}, we can insert the required functions before and
+after the code segments. We insert the enclave's entry code and enclave's parameters passing code
+before the segments, also enclave's return parameters can be built at the end of the segments.
+There should be many more details to note and consider here that need to be
+discovered and resolved in the course of research.
+
+\textbf{Data protection}. Data protection is more difficult than code protection,
+especially for global variables.
+For local variables, we can analyze them, get the program boundary,
+and put the variables as well as code into enclave for protection.
+PtrSplit focuses on C/C++ pointers, identifies pointers that block
+the generation of partition boundaries \cite{Liu2017PtrSplitSG}.
+But for global variables, there is no good solution for now. However,
+for a highly cohesive and low-coupling system, global variables are often not recommended
+\cite{GlobalVariablesAreBad},
+so dropping this part of the protection when it cannot be solved is generally not a big deal. 
 
 \subsection{Extend the binary rewriting tool into distribute system}
 
