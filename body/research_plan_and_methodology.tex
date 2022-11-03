@@ -1,4 +1,45 @@
 \section{Research Plan and Methodology}
-\subsection{Design the tool to analyze legacy programs}
+\subsection{Design a tool to analyze legacy programs}
+In order to complete the migration of a legacy system, the first step is
+to analyze the program and identify the code and data that needs to be migrated.
+There are three parts we need to consider: data analysis, recognition algorithm
+and recognition accuracy.
 
-\subsection{}
+The first is \textbf{data analysis}. The purpose of the analysis is to provide
+information about binaries so that the subsequent identification process can
+proceed smoothly.
+There are many similar works in the field of binary rewriting to explore
+the accuracy of binary analysis.
+BIRD \cite{Nanda2006BIRDBI} uses a combination of static and dynamic identification
+methods to improve the accuracy of the analysis. However, for dynamic disassembly,
+some trapped instruction need to be inserted which is not a good choice for us.
+Other papers point out that static disassembly can also achieve good results
+\cite{Andriesse2016AnIA}. So we prepare to implement the static analysis tool first
+and then decide whether to add dynamic analysis based on the accuracy of the analysis.
+
+The next is the \textbf{recognition algorithm}.
+Moat \cite{Sinha2015MoatVC} is a detection tool designed by Berkeley that uses
+automatic theorem proving and information flow analysis methods to discover the
+possibility of applications leakage of secret information in the SGX region by
+analyzing the assembly language level of the program.
+Our work can be based on Moat, from which we can extract effective identification
+and verification algorithms and use them in our analysis tools. 
+
+In order to evaluate \textbf{recognition accuracy}, we will consider it in two parts.
+\textit{Coverage of analysis}:
+We will use different test cases to see how well the overall analysis is covered.
+Since we have access to the source code of these test programs,
+the coverage of the analysis can be measured by some tools such as gcov \cite{GCOV}
+and QEMU \cite{Bellard2005QEMUAF}.
+\textit{Correctness of the analysis}:
+We also use the test cases available in the source code to verify correctness.
+We would like to compare the results of our analysis tool with the results of the source code
+after automatic analysis by Glamdring \cite{Lind2017GlamdringAA} in order to obtain
+an accurate analysis.
+
+\subsection{Design a binary rewriting tool to protect confidential code and data}
+
+\subsection{Extend the binary rewriting tool into distribute system}
+
+\subsection{Optimize the above system by software-hardware co-optimization}
+

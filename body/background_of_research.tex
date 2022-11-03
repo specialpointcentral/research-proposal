@@ -5,8 +5,7 @@ are often used to prevent confidential data loss, theft or corruption.
 However, relying solely on software for confidential data protection has many problems,
 such as software vulnerabilities, reverse engineering cracking \cite{Zimba2021ARC}, etc.
 So, it is useful to use Trusted Execution Environment(TEE) to protect encryption software
-and data, which provides an environment shielded from outside interference and provides
-the necessary mechanisms to build secure and sensitive applications.
+and data, which provides an environment shielded from outside interference and the necessary mechanisms to build secure and sensitive applications.
 
 Intel Software Guard Extensions(SGX) is a set of security architecture extensions 
 \cite{McKeen2013InnovativeIA}.
@@ -31,24 +30,24 @@ Since TrustZone lacks confidentiality support, ARM v9 proposes Confidential Comp
 CCA differs from TrustZone, which supports in-memory confidentiality capabilities directly in hardware,
 specifically designed to protect users' confidential data \cite{CCA}.
 
-\subsection{Binary rewrite and binary translation}
+\subsection{Binary rewriting and binary translation}
 Binary rewriting is a technique for modifing or translating the original binary code
 without having the source code. According to their characteristics, they can be divided
 into four categories: static, dynamic, minimal-invasive and full-translation.
 
-Static binary rewrite can use the existing information, such as static data flow analysis and
+Static binary rewriting can use the existing information, such as static data flow analysis and
 symbol table information, to optimize or enhance existing programs \cite{10.1145/2629335, Schwarz2007PLTOAL}. 
-Dynamic binary rewrite is performing alterations during execution, which can be used for performance
+Dynamic binary rewriting is performing alterations during execution, which can be used for performance
 analysis \cite{Luk2005PinBC} and hot code patching \cite{Bruening2003AnIF}.
-Minimal-invasive rewrite is based on branch granularity. It will perform additional instruction
+Minimal-invasive rewriting is based on branch granularity. It will perform additional instruction
 at the original location by rewriting to branch instructions. This is often used to add new
 function to the original program \cite{Federico2017revngAU}.
-Full-translation rewrite can convert binaries at any instruction, and usually lift origin binary code
+Full-translation rewriting can convert binaries at any instruction, and usually lift origin binary code
 into intermediate representations for translating. Some open source tools,
 like QEMU \cite{Bellard2005QEMUAF} and Valgrind \cite{Nethercote2007ValgrindAF},
 use full-translation for binary rewriting.
 
-% difference between rewrite and translation? 
+% difference between rewriting and translation? 
 % same target/cross-instruction?
 % summary
 
