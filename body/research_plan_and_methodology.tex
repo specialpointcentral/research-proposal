@@ -60,7 +60,24 @@ for a highly cohesive and low-coupling system, global variables are often not re
 \cite{GlobalVariablesAreBad},
 so dropping this part of the protection when it cannot be solved is generally not a big deal. 
 
-\subsection{Extend the binary rewriting tool into distribute system}
+\subsection{Extend the binary rewriting tool into distributed system}
+Our work will explore two areas related to distributed systems, how to support legacy distributed
+programs and how to enable tools to run on distributed systems.
+
+\textbf{Support legacy distributed programs}.
+These distributed legacy programs tend to have more complex features
+compared to ordinary programs.
+For example, OpenMP \cite{Dagum1998OpenMPAI} and MPI+OpenMP \cite{Klinkenberg2020CHAMELEONRL},
+they will use mechanisms such as semaphores, message communication, etc., which cause problems
+for both the identification and the transformation of our tools.
+We will explore and tackle these challenges during our research process.
+
+\textbf{Tool runs on distributed systems}.
+How to run our tools on a distributed platform is a complex work.
+DQEMU \cite{Zhao2020DQEMUAS} achieves a distributed dynamic binary translation system.
+It discusses the implementation issues and performance optimization including
+data coherence protocol, locking mechanism, system calls and remote thread migration.
+We can take the idea of DQEMU and modify our tool to run on a distributed system.
 
 \subsection{Optimize the above system by software-hardware co-optimization}
 

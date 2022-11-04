@@ -38,13 +38,13 @@ into four categories: static, dynamic, minimal-invasive and full-translation.
 
 Static binary rewriting can use the existing information, such as static data flow analysis and
 symbol table information, to optimize or enhance existing programs \cite{10.1145/2629335, Schwarz2007PLTOAL}. 
-Dynamic binary rewriting is performing alterations during execution, which can be used for performance
-analysis \cite{Luk2005PinBC} and hot code patching \cite{Bruening2003AnIF}.
+Dynamic binary rewriting is performing alterations during execution, which can be used for
+performance analysis \cite{Luk2005PinBC} and hot code patching \cite{Bruening2003AnIF}.
 Minimal-invasive rewriting is based on branch granularity. It will perform additional instruction
 at the original location by rewriting to branch instructions. This is often used to add new
 function to the original program \cite{Federico2017revngAU}.
-Full-translation rewriting can convert binaries at any instruction, and usually lift origin binary code
-into intermediate representations for translating. Some open source tools,
+Full-translation rewriting can convert binaries at any instruction, and usually lift origin
+binary code into intermediate representations for translating. Some open source tools,
 like QEMU \cite{Bellard2005QEMUAF} and Valgrind \cite{Nethercote2007ValgrindAF},
 use full-translation for binary rewriting.
 
@@ -52,22 +52,24 @@ use full-translation for binary rewriting.
 % same target/cross-instruction?
 % summary
 
-\subsection{Distribute system in Trusted computing}
+\subsection{Distributed system in Trusted computing}
 % spark/Hadoop/Ceph: threat
 With the rise of cloud computing and increase in data sets in recent years,
-more and more scenarios require the use of distribute systems.
-While distribute systems, such as Hadoop and Spark, are receiving an increasing number of threats.
+more and more scenarios require the use of distributed systems.
+While distributed systems, such as Hadoop and Spark, are receiving an increasing number
+of threats.
 
-In 2015, the first distribute MapReduce system VC3 was proposed, which keeps the code and
-data confidential, ensures the correctness and completeness of the results \cite{Schuster2015VC3TD}.
-SGX-PySpark \cite{Quoc2019SGXPySparkSD} was implemented in 2019, and with the help of TEE, it can protect
-the confidential data.
+In 2015, the first distribute MapReduce system VC3 \cite{Schuster2015VC3TD} was proposed,
+which keeps the code and data confidential, ensures the correctness and completeness of the results.
+SGX-PySpark \cite{Quoc2019SGXPySparkSD} was implemented in 2019, and with the help of TEE,
+it can protect the confidential data.
 
-For other systems, such as database, EnclaveDB \cite{Priebe2018EnclaveDBAS} uses SGX to protect the database engine
-and ensure high performance. EncDBDB \cite{Fuhry2021EncDBDBSE} also uses SGX for data security and is optimized
-for column-oriented in-memory databases.
+For other systems, such as database, EnclaveDB \cite{Priebe2018EnclaveDBAS} uses SGX to
+protect the database engine and ensure high performance.
+EncDBDB \cite{Fuhry2021EncDBDBSE} also uses SGX for data security and is optimized for
+column-oriented in-memory databases.
 
 In recent years, heterogeneous computing systems such as Computation Storage Architectures (CSA) 
 has also faced data security issues.
-IronSafe \cite{Unnibhavi2022SecureAP} provides a secure processing system for heterogeneous computing storage
-architectures using a hardware-assisted trusted execution environment.
+IronSafe \cite{Unnibhavi2022SecureAP} provides a secure processing system for heterogeneous
+computing storage architectures using a hardware-assisted trusted execution environment.
