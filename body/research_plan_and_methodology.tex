@@ -1,5 +1,5 @@
 \section{Research Plan and Methodology}
-\subsection{Design a tool to analyze legacy programs}
+\subsection{Design a tool to analyze legacy programs} \label{sec:ToolToAnalyze}
 In order to complete the migration of a legacy system, the first step is
 to analyze the program and identify the code and data that needs to be migrated.
 There are three parts we need to consider: data analysis, recognition algorithm
@@ -23,7 +23,7 @@ automatic theorem proving and information flow analysis methods to discover the
 possibility of applications leakage of secret information in the SGX region by
 analyzing the assembly language level of the program.
 Our work can be based on Moat, from which we can extract effective identification
-and verification algorithms and use them in our analysis tools. 
+and verification algorithms and use them in our analysis tool. 
 
 In order to evaluate \textbf{recognition accuracy}, we will consider it in two parts.
 \textit{Coverage of analysis}:
@@ -32,13 +32,13 @@ Since we have access to the source code of these test programs,
 the coverage of the analysis can be measured by some tools such as gcov \cite{GCOV}
 and QEMU \cite{Bellard2005QEMUAF}.
 \textit{Correctness of the analysis}:
-We also use the test cases available in the source code to verify correctness.
+We also use the open-source test cases to verify correctness.
 We would like to compare the results of our analysis tool with the results of the source code
 after automatic analysis by Glamdring \cite{Lind2017GlamdringAA} in order to obtain
 an accurate analysis.
 
 \subsection{Design a binary rewriting tool to protect confidential code and data}
-With the help of analysis tools, it is easy to obtain the code segments that need
+With the help of analysis tool, it is easy to obtain the code segments that need
 to be protected and the memory areas where important data is located.
 
 \textbf{Code protection}. For code segments that need to be protected,
@@ -72,12 +72,12 @@ they will use mechanisms such as semaphores, message communication, etc., which 
 for both the identification and the transformation of our tools.
 We will explore and tackle these challenges during our research process.
 
-\textbf{Tool runs on distributed systems}.
+\textbf{Tools runs on distributed systems}.
 How to run our tools on a distributed platform is a complex work.
 DQEMU \cite{Zhao2020DQEMUAS} achieves a distributed dynamic binary translation system.
 It discusses the implementation issues and performance optimization including
 data coherence protocol, locking mechanism, system calls and remote thread migration.
-We can take the idea of DQEMU and modify our tool to run on a distributed system.
+We can take the idea of DQEMU and modify our tools to run on a distributed system.
 
 \subsection{Optimize the above system by software-hardware co-optimization}
 Whether running secret code in enclave or using rewriting tools for transformation,
@@ -85,12 +85,15 @@ they both introduce a significant performance overhead.
 There are many studies investigated the overhead of trusted computing and 
 the corresponding optimization method, including avoids enclave switches \cite{Tian2018SwitchlessCM}
 and reduces page swap \cite{Orenbach2017EleosEO, Taassori2018VAULTRP}. But these optimization
-maybe difficult to implement in our tool because it is difficult to change the
+maybe difficult to implement in our tools because it is difficult to change the
 original behavior of the program. 
 In addition, binary rewriting also faces the significant performance overhead, and existing
 software optimizations are limited in dealing with these issues \cite{Kim2003HardwareSF}.
 
+Some studies have proposed several ideas for hardware-assisted acceleration, such as
+shared memory \cite{Jiang2022CRONUSFS}.
 So our future work will summarize the existing optimization and search the performance
 bottlenecks through performance analysis tools, such as Perf, VTune, etc.
 After we obtain the bottlenecks of the performance, we can extract common features
-and design/modify some hardware modules to speed up our tool and programs.
+and design/modify some hardware modules to speed up our tools and programs similar to
+the PIE \cite{Schneider2021PIEAP}.
