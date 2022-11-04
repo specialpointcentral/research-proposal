@@ -80,4 +80,17 @@ data coherence protocol, locking mechanism, system calls and remote thread migra
 We can take the idea of DQEMU and modify our tool to run on a distributed system.
 
 \subsection{Optimize the above system by software-hardware co-optimization}
+Whether running secret code in enclave or using rewriting tools for transformation,
+they both introduce a significant performance overhead.
+There are many studies investigated the overhead of trusted computing and 
+the corresponding optimization method, including avoids enclave switches \cite{Tian2018SwitchlessCM}
+and reduces page swap \cite{Orenbach2017EleosEO, Taassori2018VAULTRP}. But these optimization
+maybe difficult to implement in our tool because it is difficult to change the
+original behavior of the program. 
+In addition, binary rewriting also faces the significant performance overhead, and existing
+software optimizations are limited in dealing with these issues \cite{Kim2003HardwareSF}.
 
+So our future work will summarize the existing optimization and search the performance
+bottlenecks through performance analysis tools, such as Perf, VTune, etc.
+After we obtain the bottlenecks of the performance, we can extract common features
+and design/modify some hardware modules to speed up our tool and programs.
