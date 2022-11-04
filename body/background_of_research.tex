@@ -1,50 +1,50 @@
 \section{Background of Research}
 \subsection{Trusted Computing and TEE}
-Various encryption and authentication methods (e.g. TLS and file disk encryption)
+Various encryption and authentication methods (e.g., TLS and file disk encryption)
 are often used to prevent confidential data loss, theft or corruption.
 However, relying solely on software for confidential data protection has many problems,
-such as software vulnerabilities, reverse engineering cracking \cite{Zimba2021ARC}, etc.
-So, it is useful to use Trusted Execution Environment(TEE) to protect encryption software
-and data, which provides an environment shielded from outside interference and the necessary mechanisms
-to build secure and sensitive applications.
+such as software vulnerabilities and reverse engineering cracking \cite{Zimba2021ARC}.
+So, it is helpful to use Trusted Execution Environment (TEE) to protect encryption software
+and data, which provides an environment shielded from outside interference and the necessary
+mechanisms to build secure and sensitive applications.
 
-Intel Software Guard Extensions(SGX) is a set of security architecture extensions 
+Intel Software Guard Extensions (SGX) is a set of security architecture extensions 
 \cite{McKeen2013InnovativeIA}.
-It provides the enclave environment which can prevent all other software accessing the code
-and data located inside an enclave. Also when data leaves the enclave and written into
-the memory, the data will be automatically encrypted.
+It provides the enclave environment, preventing all other software from accessing 
+the code and data inside an enclave. Also, when data leaves the enclave and is written
+into the memory, the data will be automatically encrypted.
 
 ARM TrustZone uses a different approach to TEE by introducing a secure world,
 which is a new execution environment in the processor in addition to the normal world
-\cite{Mukhtar2019ArchitecturesFS}. The secure world has multiple privilege levels just
-like an virtual machine(VM), which provides the opportunity to implement an entire
-trusted software stack.
+\cite{Mukhtar2019ArchitecturesFS}. The secure world has multiple privilege levels,
+just like a virtual machine (VM), which allows an entire trusted software stack to
+be implemented.
 
 % new Arch
 Due to overly complex operations and unacceptable hardware overhead, Intel begin moving to
-Trust Domain Extensions(TDX) \cite{Sahita2021SecurityAO, Sardar2021DemystifyingAI}, a new
+Trust Domain Extensions (TDX) \cite{Sahita2021SecurityAO, Sardar2021DemystifyingAI}, a new
 trusted computing architecture introduces a separate trusted hypervisor/VMM. The interaction
-between trusted virtual machines and external untrusted environments need to be checked by the
+between trusted virtual machines and external untrusted environments should be checked by the
 security check module Shim.
 
 Since TrustZone lacks confidentiality support, ARM v9 proposes Confidential Compute Architecture (CCA).
-CCA \cite{CCA} differs from TrustZone, which supports in-memory confidentiality capabilities directly in hardware,
-specifically designed to protect users' confidential data.
+CCA \cite{CCA} differs from TrustZone, directly supports in-memory confidentiality capabilities in hardware,
+and protects users' confidential data.
 
 \subsection{Binary rewriting and binary translation}
-Binary rewriting is a technique for modifing or translating the original binary code
+Binary rewriting is a technique for modifying or translating the original binary code
 without having the source code. According to their characteristics, they can be divided
 into four categories: static, dynamic, minimal-invasive and full-translation.
 
 Static binary rewriting can use the existing information, such as static data flow analysis and
 symbol table information, to optimize or enhance existing programs \cite{10.1145/2629335, Schwarz2007PLTOAL}. 
-Dynamic binary rewriting is performing alterations during execution, which can be used for
+Dynamic binary rewriting performs alterations during execution, which can be used for
 performance analysis \cite{Luk2005PinBC} and hot code patching \cite{Bruening2003AnIF}.
 Minimal-invasive rewriting is based on branch granularity. It will perform additional instruction
-at the original location by rewriting to branch instructions. This is often used to add new
+at the original location by rewriting into branch instructions. This is often used to add a new
 function to the original program \cite{Federico2017revngAU}.
-Full-translation rewriting can convert binaries at any instruction, and usually lift origin
-binary code into intermediate representations for translating. Some open source tools,
+Full-translation rewriting can convert binaries at any instruction and usually lift the origin
+binary code into intermediate translation representations. Some open-source tools,
 like QEMU \cite{Bellard2005QEMUAF} and Valgrind \cite{Nethercote2007ValgrindAF},
 use full-translation for binary rewriting.
 
@@ -59,17 +59,17 @@ more and more scenarios require the use of distributed systems.
 While distributed systems, such as Hadoop and Spark, are receiving an increasing number
 of threats.
 
-In 2015, the first distribute MapReduce system VC3 \cite{Schuster2015VC3TD} was proposed,
+In 2015, the first distributed MapReduce system VC3 \cite{Schuster2015VC3TD} was proposed,
 which keeps the code and data confidential, ensures the correctness and completeness of the results.
 SGX-PySpark \cite{Quoc2019SGXPySparkSD} was implemented in 2019, and with the help of TEE,
-it can protect the confidential data.
+it can protect confidential data.
 
 For other systems, such as database, EnclaveDB \cite{Priebe2018EnclaveDBAS} uses SGX to
 protect the database engine and ensure high performance.
 EncDBDB \cite{Fuhry2021EncDBDBSE} also uses SGX for data security and is optimized for
 column-oriented in-memory databases.
 
-In recent years, heterogeneous computing systems such as Computation Storage Architectures (CSA) 
-has also faced data security issues.
+In recent years, heterogeneous computing systems, such as Computation Storage Architectures (CSA), 
+have also faced data security issues.
 IronSafe \cite{Unnibhavi2022SecureAP} provides a secure processing system for heterogeneous
 computing storage architectures using a hardware-assisted trusted execution environment.

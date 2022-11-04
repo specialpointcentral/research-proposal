@@ -1,18 +1,18 @@
 \section{Research Objectives}
 \begin{enumerate}
-    \item Design a dynamic analysis/translation tool to support running
-    legacy software on trusted computing systems. This tool can be implement
-    into 3 parts:
+    \item Design a dynamic analysis/translation tool to support legacy
+    software on trusted computing systems. This tool can be implemented
+    in 3 parts:
     \begin{itemize}
-        \item Dynamic analysis of legacy software, point out which parts of the code are
-        more vulnerable to attack and which data are important and need to be protected.
+        \item Dynamic analysis of legacy software points out which parts of the code are
+        more vulnerable to attack and which data are important and must be protected.
         \item Using the analyzed data to guide the in-place binary translation,
-        insert new code segments, which are used to protect code and migrate data into enclave.
+        insert new code segments, which are used to protect code and migrate data into enclaves.
         \item Binary translation is used for cross-instruction architecture programs. The migration
         instruction segments can be generated and added during the translation process.
     \end{itemize}
-    \item Migrate the whole dynamic analysis/translation tool into a distributed system. 
-    \item Explore performance bottlenecks and help design/modify the hardware architecture. 
+    \item Migrate the whole dynamic analysis/translation tool into a distributed system.
+    \item Explore performance bottlenecks and help design/modify the hardware architecture.
     Achieve efficient operation of the entire system with the help of hardware-software
     co-optimization.
 \end{enumerate}
