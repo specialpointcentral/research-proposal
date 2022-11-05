@@ -1,1 +1,52 @@
 \section{Introduction}
+With the development of cloud computing and big data technologies,
+more and more applications are being developed for cloud platforms
+and third-party data centers. However, cloud platform applications
+often receive various threats, especially the leakage of critical data,
+which makes many companies reluctant to use the cloud platform.
+Fortunately, trusted computing prevents confidential violation and
+protects their applications running on shared servers.
+In recent years, cloud computing service companies supported confidential
+computing and provided corresponding Trusted Execution Environment (TEE).
+For example, Amazon Nitro system \cite{AmazonNitro} uses hardware-based memory
+isolation to protect data, and Azure \cite{AzureDocs} provides computing environments
+for Intel SGX and AMD SEV-SNP and confidential container computing.
+
+How to migrate original applications to a trusted environment becomes another
+vital issue. Although both SGX and TrustZone provide their SDKs,
+it requires programmers to divide the trusted and untrusted parts.
+Glamdring \cite{Lind2017GlamdringAA} can split the code into untrusted and
+trusted parts based on tagged data. Occlum \cite{Shen2020OcclumSA} brings
+the LibOSes into SGX to support legacy programs. SCONE \cite{Arnautov2016SCONESL}
+provides a secure C standard library interface that allows applications to
+run in secure containers. 
+These solutions usually require source code and recompile (Glamdring) or
+the entire program to be run in an enclave (Occlum and SCONE).
+For those programs where the source code is not available,
+using Glamdring is not feasible.
+In addition, putting the entire program into the enclave increases
+the size of the TCB and expands the attack surface,
+which is also an unacceptable solution.
+
+Another obstacle is the performance of trusted computing.
+Switchless Calls \cite{Tian2018SwitchlessCM} changes synchronous execution
+to asynchronous execution, which can reduce enclave switching.
+VAULT \cite{Taassori2018VAULTRP} introduces a variable arity unified tree (VAULT),
+which compresses the Enclave Page Cache (EPC) and saves overhead.
+Other studies have focused more on reconfigurable trusted hardware,
+such as TEEOD \cite{Pereira2021TowardsAT} and BYOTee \cite{Armanuzzaman2022BYOTeeTB},
+which use heterogeneous SoC or FPGA to implement some new features.
+These hardware-related studies are more concerned with new features than
+performance optimization. CRONUS \cite{Jiang2022CRONUSFS} gives some suggestions
+on how to modify the hardware to speed up trusted computing but does not
+implement them.
+
+Therefore, it is a tricky problem to efficiently migrate legacy programs to TEEs,
+especially those for which source code is unavailable. This research
+will first explore the algorithms for finding confidential code and data
+for legacy programs (Section \ref{sec:ToolToAnalyze}). Then we will use these results
+to guide the rewriting tool to modify legacy programs into software that
+supports trusted computing (Section \ref{sec:ToolToRewrite}). We intend to have
+our tools support a variety of legacy software, including distributed programs
+(Section \ref{sec:ToolToDistributedSystem}), and still maintain high execution efficiency
+with the hardware-assisted (Section \ref{sec:ToolWithOptimization}).

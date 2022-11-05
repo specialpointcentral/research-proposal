@@ -1,5 +1,6 @@
 \section{Research Plan and Methodology}
-\subsection{Design a tool to analyze legacy programs} \label{sec:ToolToAnalyze}
+\subsection{Design a tool to analyze legacy programs}
+\label{sec:ToolToAnalyze}
 In order to complete the migration of a legacy system, the first step is
 to analyze the program and identify the code and data that needs to be migrated.
 We need to consider three parts: data analysis, recognition algorithm
@@ -38,6 +39,7 @@ source code after automatic analysis by Glamdring \cite{Lind2017GlamdringAA} to 
 an accurate analysis.
 
 \subsection{Design a binary rewriting tool to protect confidential code and data}
+\label{sec:ToolToRewrite}
 With the help of an analysis tool, it is easy to obtain the code segments that need
 to be protected and the memory areas where vital data is located.
 
@@ -61,6 +63,7 @@ global variables are often not recommended for a highly cohesive and low-couplin
 so dropping this part of the protection when it cannot be solved is generally not a big deal. 
 
 \subsection{Extend the binary rewriting tool into distributed system}
+\label{sec:ToolToDistributedSystem}
 Our work will explore two areas related to distributed systems, how to support legacy distributed
 programs and enable tools to run on distributed systems.
 
@@ -79,7 +82,8 @@ It discusses the implementation issues and performance optimization, including
 data coherence protocol, locking mechanism, system calls, and remote thread migration.
 We can take the idea of DQEMU and modify our tools to run on a distributed system.
 
-\subsection{Optimize the above system by software-hardware co-optimization}
+\subsection{Optimize the system by software-hardware co-optimization}
+\label{sec:ToolWithOptimization}
 Whether running secret code in enclaves or using rewriting tools for transformation,
 they both introduce a significant performance overhead.
 Many studies investigated the overhead of trusted computing and 
