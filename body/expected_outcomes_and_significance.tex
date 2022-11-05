@@ -1,5 +1,5 @@
 \section{Expected Outcomes and Significance}
-In order to evaluate the effectiveness of our work, as we mentioned in section
+To evaluate the effectiveness of our work, as we mentioned in section
 \ref{sec:ToolToAnalyze}, we can use a series of open-source test cases and benchmarks,
 such as SPEC, UnixBench. 
 We will also consider using SGXGauge \cite{Kumar2022ACB}, a test suite specifically
@@ -11,20 +11,19 @@ For example, we can use HyperEnclave \cite{Jia2022HyperEnclaveAO}, TrustVisor
 \cite{Tsai2017GrapheneSGXAP} as baseline systems for performance analysis.
 
 Although these cross-platform TEEs propose various solutions to address the
-legacy programs, most are modifying libraries and putting them into the
-enclave as a whole. This could lead to the expansion of the TCB and lead
-to an expansion of the attack surface.
+legacy programs, most modify libraries and put them into the enclave.
+This could lead to the expansion of the TCB and cause  an attack surface expansion.
 
 Our solution uses binary rewriting to place the analyzed confidential code and data
-into enclaves, which both hardening the legacy problems and reducing the size of TCB.
+into enclaves, hardening the legacy problems and reducing the size of TCB.
 We anticipate our tools for legacy programs can reach the following goals:
 \begin{enumerate}
-    \item Analysis tool can efficiently and accurately identify vulnerable code and data.
+    \item The analysis tool can efficiently and accurately identify vulnerable code and data.
     Using analysis tool alone can help developers find software weaknesses and flaws.
-    \item Binary rewriting tool can rewrite legacy programs into enclave-protected programs
+    \item The binary rewriting tool can rewrite legacy programs into enclave-protected programs
     with the help of analysis results.
-    \item The extension of tools support distributed legacy programs.
+    \item Our tools are extended to support distributed legacy programs.
     \item Based on the performance data, we design or modify the hardware.
-    With hardware assisted, we expect the performance can exceed other cross-platform TEEs,
+    With hardware-assisted, we expect the performance can exceed other cross-platform TEEs
     or even approach the performance of native programs.
 \end{enumerate}
