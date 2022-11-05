@@ -11,16 +11,16 @@ For example, we can use HyperEnclave \cite{Jia2022HyperEnclaveAO}, TrustVisor
 \cite{Tsai2017GrapheneSGXAP} as baseline systems for performance analysis.
 
 Although these cross-platform TEEs propose various solutions to address the
-legacy programs, most modify libraries and put them into the enclave.
+legacy softwares, most modify libraries and put them into the enclave.
 This could lead to the expansion of the TCB and cause  an attack surface expansion.
 
 Our solution uses binary rewriting to place the analyzed confidential code and data
-into enclaves, hardening the legacy problems and reducing the size of TCB.
-We anticipate our tools for legacy programs can reach the following goals:
+into enclaves, hardening the legacy softwares and reducing the size of TCB.
+We anticipate our tools for legacy softwares can reach the following goals:
 \begin{enumerate}
     \item The analysis tool can efficiently and accurately identify vulnerable code and data.
     Using analysis tool alone can help developers find software weaknesses and flaws.
-    \item The binary rewriting tool can rewrite legacy programs into enclave-protected programs
+    \item The binary rewriting tool can rewrite legacy softwares into enclave-protected programs
     with the help of analysis results.
     \item Our tools are extended to support distributed legacy programs.
     \item Based on the performance data, we design or modify the hardware.
