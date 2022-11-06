@@ -21,9 +21,9 @@ just like a virtual machine (VM), which allows an entire trusted software stack 
 be implemented.
 
 % new Arch
-Due to overly complex operations and unacceptable hardware overhead, Intel begin moving to
-Trust Domain Extensions (TDX) \cite{Sahita2021SecurityAO, Sardar2021DemystifyingAI}, a new
-trusted computing architecture introduces a separate trusted hypervisor/VMM. The interaction
+Due to overly complex operations and unacceptable hardware overhead, Intel started to move
+towards Trust Domain Extensions (TDX) \cite{Sahita2021SecurityAO, Sardar2021DemystifyingAI},
+a new trusted computing architecture introduces a separate trusted hypervisor. The interaction
 between trusted virtual machines and external untrusted environments should be checked by the
 security check module Shim.
 
@@ -43,7 +43,7 @@ performance analysis \cite{Luk2005PinBC} and hot code patching \cite{Bruening200
 Minimal-invasive rewriting is based on branch granularity. It will perform additional instruction
 at the original location by rewriting into branch instructions. This is often used to add a new
 function to the original program \cite{Federico2017revngAU}.
-Full-translation rewriting can convert binaries at any instruction and usually lift the origin
+Full-translation rewriting can convert binaries at any instruction and usually lift the original
 binary code into intermediate translation representations. Some open-source tools,
 like QEMU \cite{Bellard2005QEMUAF} and Valgrind \cite{Nethercote2007ValgrindAF},
 use full-translation for binary rewriting.
@@ -54,7 +54,7 @@ use full-translation for binary rewriting.
 
 \subsection{Distributed system in Trusted computing}
 % spark/Hadoop/Ceph: threat
-With the rise of cloud computing and increase in data sets in recent years,
+With the rise of cloud computing and the increase in data sets in recent years,
 more and more scenarios require the use of distributed systems.
 While distributed systems, such as Hadoop and Spark, are receiving an increasing number
 of threats.
