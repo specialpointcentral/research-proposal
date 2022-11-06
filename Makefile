@@ -61,4 +61,4 @@ distclean: clean
 	-rm -f *.ps
 	-rm -f *.dvi
 	-rm -f *.synctex.gz
-	-rm -rf ./make
+	-rm -rf make

@@ -1,7 +1,7 @@
 compile_pdf:
   image: aergus/latex
   script:
-    - make research_proposal.pdf
+    - make main.pdf
   artifacts:
     paths:
-      - research_proposal.pdf
+      - main.pdf
