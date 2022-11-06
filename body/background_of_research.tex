@@ -2,20 +2,20 @@
 \subsection{Trusted Computing and TEE}
 Various encryption and authentication methods (e.g., TLS and file disk encryption)
 are often used to prevent confidential data loss, theft or corruption.
-However, relying solely on software for confidential data protection has many problems,
+However, relying on software alone to protect confidential data has many problems,
 such as software vulnerabilities and reverse engineering cracking \cite{Zimba2021ARC}.
-So, it is helpful to use Trusted Execution Environment (TEE) to protect encryption software
-and data, which provides an environment shielded from outside interference and the necessary
-mechanisms to build secure and sensitive applications.
+So, it is helpful to use Trusted Execution Environment (TEE) to protect this encryption
+software and data, which provides an environment shielded from outside interference and
+the necessary mechanisms to build secure and sensitive applications.
 
 Intel Software Guard Extensions (SGX) is a set of security architecture extensions
 \cite{McKeen2013InnovativeIA}.
-It provides the enclave environment, preventing all other software from accessing
+It provides the enclave environment that prevents other software from accessing
 the code and data inside an enclave. Also, when data leaves the enclave and is written
 into the memory, the data will be automatically encrypted.
 
 ARM TrustZone uses a different approach to TEE by introducing a secure world,
-which is a new execution environment in the processor in addition to the normal world
+which is a new execution environment besides the normal world in the processor
 \cite{Mukhtar2019ArchitecturesFS}. The secure world has multiple privilege levels,
 just like a virtual machine (VM), which allows an entire trusted software stack to
 be implemented.
@@ -55,19 +55,19 @@ use full-translation for binary rewriting.
 \subsection{Distributed system in Trusted computing}
 % spark/Hadoop/Ceph: threat
 With the rise of cloud computing and the increase in data sets in recent years,
-more and more scenarios require the use of distributed systems.
-While distributed systems, such as Hadoop and Spark, are receiving an increasing number
+more and more occasions require the use of distributed systems.
+While distributed systems, such as Hadoop and Spark, are facing an increasing number
 of threats.
 
 In 2015, the first distributed MapReduce system VC3 \cite{Schuster2015VC3TD} was proposed,
 which keeps the code and data confidential, ensures the correctness and completeness of the results.
-SGX-PySpark \cite{Quoc2019SGXPySparkSD} was implemented in 2019, and with the help of TEE,
-it can protect confidential data.
+SGX-PySpark \cite{Quoc2019SGXPySparkSD} was implemented to protect confidential data
+with the help of TEE in 2019.
 
 For other systems, such as database, EnclaveDB \cite{Priebe2018EnclaveDBAS} uses SGX to
 protect the database engine and ensure high performance.
-EncDBDB \cite{Fuhry2021EncDBDBSE} also uses SGX for data security and is optimized for
-column-oriented in-memory databases.
+EncDBDB \cite{Fuhry2021EncDBDBSE} is optimized for column-oriented in-memory databases,
+also uses SGX for data security.
 
 In recent years, heterogeneous computing systems, such as Computation Storage Architectures (CSA),
 have also faced data security issues.

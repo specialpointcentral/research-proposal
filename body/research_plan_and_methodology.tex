@@ -6,14 +6,14 @@ to analyze the program and identify the code and data that needs to be migrated.
 We need to consider three parts: data analysis, recognition algorithm
 and recognition accuracy.
 
-The first is \textbf{data analysis}. The analysis aims to provide
-information about binaries so that the subsequent identification process can
-proceed smoothly.
+The first is \textbf{data analysis}. The purpose of the analysis is to provide
+information about the binary program so that the subsequent identification process
+can proceed smoothly.
 There are many similar works in the field of binary rewriting to explore
 the accuracy of binary analysis.
 BIRD \cite{Nanda2006BIRDBI} uses a combination of static and dynamic identification
-methods to improve the accuracy of the analysis. However, for dynamic disassembly,
-some trapped instructions need to be inserted which is not a good choice for us.
+methods to improve the accuracy of the analysis. However, some trapped instructions
+need to be inserted during dynamic disassembly, which is not a good choice for us.
 Other papers point out that static disassembly can also achieve good results
 \cite{Andriesse2016AnIA}. So we prepare to implement the static analysis tool first
 and then decide whether to add dynamic analysis based on the accuracy of the analysis.
@@ -23,8 +23,8 @@ Moat \cite{Sinha2015MoatVC} is a detection tool designed by Berkeley that uses
 automatic theorem proving and information flow analysis methods to discover the
 possibility of application leakage of secret information in the SGX region by
 analyzing the assembly language level of the program.
-Our work can be based on Moat, from which we can extract effective identification
-and verification algorithms and use them in our analysis tool.
+Our work can base on Moat, and extract effective identification and verification
+algorithms from Moat, which can be used in our analysis tool.
 
 To evaluate \textbf{recognition accuracy}, we will consider it in two parts.
 \textit{Coverage of analysis}:
@@ -43,24 +43,24 @@ an accurate analysis.
 With the help of an analysis tool, it is easy to obtain the code segments that need
 to be protected and the memory areas where vital data is located.
 
-\textbf{Code protection}. We can use the Minimal-invasive translation method for
+\textbf{Code protection}. We can use the minimal-invasive translation method for
 code segments that need to be protected. Similar to the rev.ng \cite{Federico2017revngAU}
-and pin \cite{Luk2005PinBC}, we can insert the required functions before and
+and pin \cite{Luk2005PinBC}, we can insert required functions before and
 after the code segments. We insert the enclave's entry code and enclave's parameters passing code
 before the segments. Also, enclave's return parameters can be built at the end of the segments.
-There should be many more details to note and consider here that need to be
+There should be many more details to be noticed and considered, which need to be
 discovered and resolved during research.
 
 \textbf{Data protection}. Data protection is more complicated than code protection,
 especially for global variables.
 For local variables, we can analyze them, get the program boundary,
 and put the variables as well as code into enclaves for protection.
-PtrSplit focuses on C/C++ pointers and identifies pointers that block
-the generation of partition boundaries \cite{Liu2017PtrSplitSG}.
+PtrSplit \cite{Liu2017PtrSplitSG} focuses on identifying C/C++ pointers
+that prevent the generation of partition boundaries.
 But for global variables, there is no good solution for now. However,
 global variables are often not recommended for a highly cohesive and low-coupling system
 \cite{GlobalVariablesAreBad, GlobalVariablesAreEvil},
-so dropping this part of the protection when it cannot be solved is generally not a big deal.
+so dropping protection for this part when it cannot be solved is generally not a big deal.
 
 \subsection{Extend the binary rewriting tool into distributed system}
 \label{sec:ToolToDistributedSystem}
@@ -70,13 +70,13 @@ programs and enable tools to run on distributed systems.
 \textbf{Support legacy distributed programs}.
 These distributed legacy programs tend to have more complex features
 than to ordinary programs.
-For example, OpenMP \cite{Dagum1998OpenMPAI} and MPI+OpenMP \cite{Klinkenberg2020CHAMELEONRL},
+For example, OpenMP \cite{Dagum1998OpenMPAI} and MPI+OpenMP \cite{Klinkenberg2020CHAMELEONRL}
 will use mechanisms such as semaphores, message communication, etc., which cause problems
 for both the identification and transformation of our tools.
 We will explore and tackle these challenges during our research process.
 
 \textbf{Tools run on distributed systems}.
-How to run our tools on a distributed platform is a complex work.
+How to run our tools on a distributed platform is another complex work.
 DQEMU \cite{Zhao2020DQEMUAS} achieves a distributed dynamic binary translation system.
 It discusses the implementation issues and performance optimization, including
 data coherence protocol, locking mechanism, system calls, and remote thread migration.
@@ -97,7 +97,7 @@ software optimizations are limited in dealing with these issues \cite{Kim2003Har
 Some studies have proposed several ideas for hardware-assisted acceleration, such as
 shared memory \cite{Jiang2022CRONUSFS}.
 So our future work will summarize the existing optimization and search the performance
-bottlenecks through performance analysis tools, such as Perf, VTune, etc.
+bottlenecks through performance analysis tools, such as Perf, VTune and sgx-perf \cite{Weichbrodt2018sgxperfAP}.
 After we obtain the bottlenecks of the performance, we can summarize the common characteristics
-and design/modify some hardware modules to speed up our tools and programs similar to
+and design or modify some hardware modules to speed up our tools and programs, similar to
 the PIE \cite{Schneider2021PIEAP}.

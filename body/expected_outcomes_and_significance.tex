@@ -10,9 +10,11 @@ For example, we can use HyperEnclave \cite{Jia2022HyperEnclaveAO}, TrustVisor
 \cite{McCune2010TrustVisorET}, Occlum \cite{Shen2020OcclumSA} and Graphene
 \cite{Tsai2017GrapheneSGXAP} as baseline systems for performance analysis.
 
-Although these cross-platform TEEs propose various solutions to address the
-legacy software, most modify libraries and put them into the enclave.
-This could lead to the expansion of the TCB and cause  an attack surface expansion.
+Although these cross-platform TEEs propose various solutions to the legacy
+software problem, most research involves modifying libraries and putting
+them into the enclave.
+This could lead to the expansion of the Trusted Computing Base (TCB)
+and the attack surface's expansion.
 
 Our solution uses binary rewriting to place the analyzed confidential code and data
 into enclaves, hardening the legacy software and reducing the size of TCB.
