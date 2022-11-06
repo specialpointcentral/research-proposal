@@ -24,7 +24,7 @@ automatic theorem proving and information flow analysis methods to discover the
 possibility of application leakage of secret information in the SGX region by
 analyzing the assembly language level of the program.
 Our work can be based on Moat, from which we can extract effective identification
-and verification algorithms and use them in our analysis tool. 
+and verification algorithms and use them in our analysis tool.
 
 To evaluate \textbf{recognition accuracy}, we will consider it in two parts.
 \textit{Coverage of analysis}:
@@ -60,7 +60,7 @@ the generation of partition boundaries \cite{Liu2017PtrSplitSG}.
 But for global variables, there is no good solution for now. However,
 global variables are often not recommended for a highly cohesive and low-coupling system
 \cite{GlobalVariablesAreBad, GlobalVariablesAreEvil},
-so dropping this part of the protection when it cannot be solved is generally not a big deal. 
+so dropping this part of the protection when it cannot be solved is generally not a big deal.
 
 \subsection{Extend the binary rewriting tool into distributed system}
 \label{sec:ToolToDistributedSystem}
@@ -86,11 +86,11 @@ We can take the idea of DQEMU and modify our tools to run on a distributed syste
 \label{sec:ToolWithOptimization}
 Whether running secret code in enclaves or using rewriting tools for transformation,
 they both introduce a significant performance overhead.
-Many studies investigated the overhead of trusted computing and 
+Many studies investigated the overhead of trusted computing and
 the corresponding optimization method, including avoiding enclave switches
 \cite{Tian2018SwitchlessCM} and reduceing page swaps \cite{Orenbach2017EleosEO, Taassori2018VAULTRP}.
 But these optimizations may be challenging to implement in our tools because it is hard
-to change the program's original behavior. 
+to change the program's original behavior.
 In addition, binary rewriting also faces significant performance overhead, and existing
 software optimizations are limited in dealing with these issues \cite{Kim2003HardwareSF}.
 

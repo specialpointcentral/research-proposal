@@ -8,9 +8,9 @@ So, it is helpful to use Trusted Execution Environment (TEE) to protect encrypti
 and data, which provides an environment shielded from outside interference and the necessary
 mechanisms to build secure and sensitive applications.
 
-Intel Software Guard Extensions (SGX) is a set of security architecture extensions 
+Intel Software Guard Extensions (SGX) is a set of security architecture extensions
 \cite{McKeen2013InnovativeIA}.
-It provides the enclave environment, preventing all other software from accessing 
+It provides the enclave environment, preventing all other software from accessing
 the code and data inside an enclave. Also, when data leaves the enclave and is written
 into the memory, the data will be automatically encrypted.
 
@@ -37,7 +37,7 @@ without having the source code. According to their characteristics, they can be 
 into four categories: static, dynamic, minimal-invasive and full-translation.
 
 Static binary rewriting can use the existing information, such as static data flow analysis and
-symbol table information, to optimize or enhance existing programs \cite{10.1145/2629335, Schwarz2007PLTOAL}. 
+symbol table information, to optimize or enhance existing programs \cite{10.1145/2629335, Schwarz2007PLTOAL}.
 Dynamic binary rewriting performs alterations during execution, which can be used for
 performance analysis \cite{Luk2005PinBC} and hot code patching \cite{Bruening2003AnIF}.
 Minimal-invasive rewriting is based on branch granularity. It will perform additional instruction
@@ -48,7 +48,7 @@ binary code into intermediate translation representations. Some open-source tool
 like QEMU \cite{Bellard2005QEMUAF} and Valgrind \cite{Nethercote2007ValgrindAF},
 use full-translation for binary rewriting.
 
-% difference between rewriting and translation? 
+% difference between rewriting and translation?
 % same target/cross-instruction?
 % summary
 
@@ -69,7 +69,7 @@ protect the database engine and ensure high performance.
 EncDBDB \cite{Fuhry2021EncDBDBSE} also uses SGX for data security and is optimized for
 column-oriented in-memory databases.
 
-In recent years, heterogeneous computing systems, such as Computation Storage Architectures (CSA), 
+In recent years, heterogeneous computing systems, such as Computation Storage Architectures (CSA),
 have also faced data security issues.
 IronSafe \cite{Unnibhavi2022SecureAP} provides a secure processing system for heterogeneous
 computing storage architectures using a hardware-assisted trusted execution environment.
