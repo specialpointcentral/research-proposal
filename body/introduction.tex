@@ -12,8 +12,9 @@ For example, Amazon Nitro system \cite{AmazonNitro} uses hardware-based memory
 isolation to protect data, and Azure \cite{AzureDocs} provides computing environments
 for Intel SGX and AMD SEV-SNP and confidential container computing.
 
-How to migrate original applications to a trusted environment becomes another
-vital issue. Although both SGX and TrustZone provide their SDKs,
+Based on trusted computing technologies, how to How to migrate original applications
+to a trusted environment becomes a vital issue.
+Although both SGX and TrustZone provide their SDKs,
 it requires programmers to divide the trusted and untrusted parts.
 Glamdring \cite{Lind2017GlamdringAA} can split the code into untrusted and
 trusted parts based on tagged data. Occlum \cite{Shen2020OcclumSA} brings
@@ -41,9 +42,9 @@ performance optimization. CRONUS \cite{Jiang2022CRONUSFS} gives some suggestions
 on how to modify the hardware to speed up trusted computing but does not
 implement them.
 
-Therefore, it is a tricky problem to efficiently migrate legacy programs to TEEs,
-especially those for which source code is unavailable. This research
-will first explore the algorithms for finding confidential code and data
+As discussed above, it is a tricky problem to efficiently migrate legacy programs to TEEs,
+especially when the source code is unavailable. To tackle the limitations,
+my Ph.D. research will first explore the algorithms for finding confidential code and data
 for legacy programs (Section \ref{sec:ToolToAnalyze}). Then we will use these results
 to guide the rewriting tool to modify legacy programs into software that
 supports trusted computing (Section \ref{sec:ToolToRewrite}). We intend to have
