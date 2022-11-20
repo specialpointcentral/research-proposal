@@ -14,7 +14,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
+      - name: Build drawio
+        uses: rlespinasse/drawio-export-action@v2
+        with:
+          action-mode: all
+          remove-page-suffix: true
+          path: drawio
+          output: .
+          format: pdf
+          crop: true
+
+      - name: "Test"
+        run: |
+          ls -l .
+          ls -l ./drawio
+
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:

@@ -4,7 +4,7 @@ objectives are initially expected as follows.
 \begin{enumerate}[(1)]
     \item Design a dynamic analysis/translation tool to support legacy
     software on trusted computing systems. This tool can be implemented
-    in 3 parts:
+    in 3 parts, and the overall structure is shown in the figure \ref{fig:arch}.
     \begin{itemize}
         \item Dynamic analysis of legacy software points out which parts of the code are
         more vulnerable to attack and which data are essential and must be protected.
@@ -18,3 +18,10 @@ objectives are initially expected as follows.
     Achieve efficient operation of the entire system with the help of hardware-software
     co-optimization.
 \end{enumerate}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.95\textwidth]{drawio/architecture}
+    \caption{The overall structure of the migration system}
+    \label{fig:arch}
+\end{figure}

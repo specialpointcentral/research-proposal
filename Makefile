@@ -3,12 +3,15 @@
 # This should work as long as you have all the .tex, .sty and .bib files in
 # the same folder.
 MAINFILE = main
-EXTRA_FILES := $(wildcard images/*)
 
 ## Inner workings
 OBJECTS = $(wildcard *.tex body/*.tex)
 STYLES = $(wildcard *.sty)
 BIB = $(wildcard *.bib)
+DRAWS = $(wildcard drawio/*.drawio)
+
+EXTRA_FILES := $(wildcard images/*)
+DRAWS_FILES := $(addsuffix .drawpic, $(basename $(DRAWS)))
 
 OBJECTS_TEST = $(addsuffix .t, $(basename $(OBJECTS)))
 STYLES_TEST = $(addsuffix .s, $(basename $(STYLES)))
@@ -18,19 +21,20 @@ TEMP2 := $(shell mkdir -p make/body 2>/dev/null)
 
 LATEX 	?= pdflatex
 BIBTEX 	?= bibtex
+DRAWIO  ?= drawio
 
 LATEX_FLAGS = -synctex=1 -shell-escape -interaction=nonstopmode -file-line-error
+DRAWIO_FLAGS = -f pdf -x --crop
 
 .PHONY: all
 all: $(MAINFILE).dvi $(MAINFILE).pdf
 	/bin/bash xdg-open $(MAINFILE).pdf
 
-
-$(MAINFILE).dvi: $(TESTS) $(EXTRA_FILES)
+$(MAINFILE).dvi: $(DRAWS_FILES) $(TESTS) $(EXTRA_FILES)
 	$(LATEX) $(LATEX_FLAGS) $(MAINFILE)
 	$(LATEX) $(LATEX_FLAGS) $(MAINFILE)
 
-$(MAINFILE).pdf: $(TESTS) $(EXTRA_FILES)
+$(MAINFILE).pdf: $(DRAWS_FILES) $(TESTS) $(EXTRA_FILES)
 	$(LATEX) $(LATEX_FLAGS) $(MAINFILE)
 	$(LATEX) $(LATEX_FLAGS) $(MAINFILE)
 	
@@ -45,6 +49,10 @@ make/bib: $(BIB)
 	$(BIBTEX) $(MAINFILE)
 	@touch $@
 
+%.drawpic: %.drawio
+	$(DRAWIO) $(DRAWIO_FLAGS) $< -o $@
+	mv $@ $(addsuffix .pdf, $(basename $<))
+
 .PHONY: clean
 clean:
 	-rm -f *.aux body/*.aux
@@ -53,6 +61,7 @@ clean:
 	-rm -f *.bbl body/*.bbl
 	-rm -f *.blg body/*.blg
 	-rm -f *.out body/*.out
+	-rm -f *.drawpic drawio/*.pdf
 	-rm -f make/bib
 
 .PHONY: distclean
