@@ -65,22 +65,22 @@ so dropping protection for this part when it cannot be solved is generally not a
 \subsection{Extend the binary rewriting tool into distributed system}
 \label{sec:ToolToDistributedSystem}
 Our work will explore two areas related to distributed systems, how to support legacy distributed
-programs and enable tools to run on distributed systems.
+programs and enable our system to run on distributed platforms.
 
 \textbf{Support legacy distributed programs}.
 These distributed legacy programs tend to have more complex features
 than to ordinary programs.
 For example, OpenMP \cite{Dagum1998OpenMPAI} and MPI+OpenMP \cite{Klinkenberg2020CHAMELEONRL}
 will use mechanisms such as semaphores, message communication, etc., which cause problems
-for both the identification and transformation of our tools.
+for both the identification and transformation of our system.
 We will explore and tackle these challenges during our research process.
 
 \textbf{Tools run on distributed systems}.
-How to run our tools on a distributed platform is another complex work.
+How to run our system on a distributed platform is another complex work.
 DQEMU \cite{Zhao2020DQEMUAS} achieves a distributed dynamic binary translation system.
 It discusses the implementation issues and performance optimization, including
 data coherence protocol, locking mechanism, system calls, and remote thread migration.
-We can take the idea of DQEMU and modify our tools to run on a distributed system.
+We can take the idea of DQEMU and modify our system to run on a distributed platform.
 
 \subsection{Optimize the system by software-hardware co-optimization}
 \label{sec:ToolWithOptimization}
@@ -89,7 +89,7 @@ they both introduce a significant performance overhead.
 Many studies investigated the overhead of trusted computing and
 the corresponding optimization method, including avoiding enclave switches
 \cite{Tian2018SwitchlessCM} and reduceing page swaps \cite{Orenbach2017EleosEO, Taassori2018VAULTRP}.
-But these optimizations may be challenging to implement in our tools because it is hard
+But these optimizations may be challenging to implement in our system because it is hard
 to change the program's original behavior.
 In addition, binary rewriting also faces significant performance overhead, and existing
 software optimizations are limited in dealing with these issues \cite{Kim2003HardwareSF}.
@@ -99,5 +99,5 @@ shared memory \cite{Jiang2022CRONUSFS}.
 So our future work will summarize the existing optimization and search the performance
 bottlenecks through performance analysis tools, such as Perf, VTune and sgx-perf \cite{Weichbrodt2018sgxperfAP}.
 After we obtain the bottlenecks of the performance, we can summarize the common characteristics
-and design or modify some hardware modules to speed up our tools and programs, similar to
+and design or modify some hardware modules to speed up our system and programs, similar to
 the PIE \cite{Schneider2021PIEAP}.

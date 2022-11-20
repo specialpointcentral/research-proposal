@@ -4,8 +4,8 @@ To evaluate the effectiveness of our work, as we mentioned in section
 such as SPEC, UnixBench.
 We will also consider using SGXGauge \cite{Kumar2022ACB}, a test suite specifically
 designed to test the performance of trusted systems, to measure the performance
-of our tool.
-Besides that, we are able to compare our tools with other cross-platform TEEs.
+of our system.
+Besides that, we are able to compare our system with other cross-platform TEEs.
 For example, we can use HyperEnclave \cite{Jia2022HyperEnclaveAO}, TrustVisor
 \cite{McCune2010TrustVisorET}, Occlum \cite{Shen2020OcclumSA} and Graphene
 \cite{Tsai2017GrapheneSGXAP} as baseline systems for performance analysis.
@@ -18,13 +18,13 @@ and the attack surface's expansion.
 
 Our solution uses binary rewriting to place the analyzed confidential code and data
 into enclaves, hardening the legacy software and reducing the size of TCB.
-We anticipate our tools for legacy software can reach the following goals:
+We anticipate our system for legacy software can reach the following goals:
 \begin{enumerate}[(1)]
     \item The analysis tool can efficiently and accurately identify vulnerable code and data.
     Using analysis tool alone can help developers find software weaknesses and flaws.
     \item The binary rewriting tool can rewrite legacy software into enclave-protected programs
     with the help of analysis results.
-    \item Our tools are extended to support distributed legacy programs.
+    \item Our system are extended to support distributed legacy programs.
     \item Based on the performance data, we design or modify the hardware.
     With hardware-assisted, we expect the performance can exceed other cross-platform TEEs
     or even approach the performance of native programs.
