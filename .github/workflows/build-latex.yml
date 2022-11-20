@@ -13,7 +13,7 @@ jobs:
   build_release_latex:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Build drawio
         uses: rlespinasse/drawio-export-action@v2
@@ -25,11 +25,6 @@ jobs:
           format: pdf
           crop: true
 
-      - name: "Test"
-        run: |
-          ls -l .
-          ls -l ./drawio
-
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
@@ -40,7 +35,7 @@ jobs:
           mv main.pdf $HOME # cache the file
           
       - name: Create Branch
-        uses: peterjgrainger/action-create-branch@v2.0.1
+        uses: peterjgrainger/action-create-branch@v2.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -60,7 +55,7 @@ jobs:
           git commit -m "Updated by GitHub Action Automatically"
           
       - name: Push PDF
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-push-action@master
         with: 
           branch: gh_actions_builds 
           force: true
