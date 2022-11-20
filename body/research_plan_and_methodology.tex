@@ -14,7 +14,7 @@ the accuracy of binary analysis.
 BIRD \cite{Nanda2006BIRDBI} uses a combination of static and dynamic identification
 methods to improve the accuracy of the analysis. However, some trapped instructions
 need to be inserted during dynamic disassembly, which is not a good choice for us.
-Other papers point out that static disassembly can also achieve good results
+Other papers indicate that static disassembly can also achieve good results
 \cite{Andriesse2016AnIA}. So we prepare to implement the static analysis tool first
 and then decide whether to add dynamic analysis based on the accuracy of the analysis.
 
@@ -48,7 +48,7 @@ code segments that need to be protected. Similar to the rev.ng \cite{Federico201
 and pin \cite{Luk2005PinBC}, we can insert required functions before and
 after the code segments. We insert the enclave's entry code and enclave's parameters passing code
 before the segments. Also, enclave's return parameters can be built at the end of the segments.
-There should be many more details to be noticed and considered, which need to be
+Many more details should be noticed and considered, which need to be
 discovered and resolved during research.
 
 \textbf{Data protection}. Data protection is more complicated than code protection,
@@ -68,8 +68,7 @@ Our work will explore two areas related to distributed systems, how to support l
 programs and enable our system to run on distributed platforms.
 
 \textbf{Support legacy distributed programs}.
-These distributed legacy programs tend to have more complex features
-than to ordinary programs.
+These distributed legacy programs tend to have more complex features than ordinary programs.
 For example, OpenMP \cite{Dagum1998OpenMPAI} and MPI+OpenMP \cite{Klinkenberg2020CHAMELEONRL}
 will use mechanisms such as semaphores, message communication, etc., which cause problems
 for both the identification and transformation of our system.
@@ -88,7 +87,7 @@ Whether running secret code in enclaves or using rewriting tools for transformat
 they both introduce a significant performance overhead.
 Many studies investigated the overhead of trusted computing and
 the corresponding optimization method, including avoiding enclave switches
-\cite{Tian2018SwitchlessCM} and reduceing page swaps \cite{Orenbach2017EleosEO, Taassori2018VAULTRP}.
+\cite{Tian2018SwitchlessCM} and reducing page swaps \cite{Orenbach2017EleosEO, Taassori2018VAULTRP}.
 But these optimizations may be challenging to implement in our system because it is hard
 to change the program's original behavior.
 In addition, binary rewriting also faces significant performance overhead, and existing

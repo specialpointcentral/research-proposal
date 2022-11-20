@@ -13,14 +13,14 @@ isolation to protect data, and Azure \cite{AzureDocs} provides computing environ
 for Intel SGX and AMD SEV-SNP and confidential container computing.
 
 However, it is non-trivial to execute legacy(off-the-shelf) applications
-in a trusted execution environment with security guarantees.
+in a trusted execution environment with security guarantee.
 The first solution is to \textbf{rewrite the source code} and recompile it.
 Although both SGX and TrustZone provide their SDKs, it requires programmers
-to divide the trusted and untrusted parts, making it extremely difficult for
+to divide the trusted and intrusted parts, making it extremely difficult for
 developers who need to be aware of TEEs. Several automated tools are used to assist
 in rewriting the source code to make this process easier.
 For example, Glamdring \cite{Lind2017GlamdringAA} can automatically
-split the code into untrusted and trusted parts based on tagged data.
+split the code into intrusted and trusted parts based on tagged data.
 Unfortunately, for those programs where the source code is not available,
 using Glamdring is not feasible.
 Another solution is to use \textbf{shielding} to support legacy programs.
@@ -28,7 +28,7 @@ For example, Occlum \cite{Shen2020OcclumSA} brings the LibOSes
 into SGX to support legacy programs. SCONE \cite{Arnautov2016SCONESL}
 provides a secure C standard library interface that allows applications to
 run in secure containers. They both require an entire program to be run in an enclave.
-Although shielding supports those programs where the source code is unavailable,
+Even though shielding supports those programs where the source code is unavailable,
 putting the entire program into the enclave can increase the size of the
 Trusted Computing Base (TCB), such as Graphene \cite{Tsai2017GrapheneSGXAP}
 adding 10 kLoC to TCB.
@@ -39,7 +39,7 @@ Worse, even when applications can be executed transparently and safely within a 
 these applications often experience severe performance issues.
 These problems are usually caused by frequent context switches and memory limitations.
 Switchless Calls \cite{Tian2018SwitchlessCM} changes synchronous execution
-to asynchronous execution, which can reduce enclave switching.
+to asynchronous execution, which can reduce enclaves switching.
 VAULT \cite{Taassori2018VAULTRP} introduces a variable arity unified tree (VAULT),
 which compresses the Enclave Page Cache (EPC) and saves overhead.
 Other studies have focused more on reconfigurable trusted hardware,
@@ -50,7 +50,7 @@ performance optimization. CRONUS \cite{Jiang2022CRONUSFS} gives some suggestions
 on modifying the hardware to speed up trusted computing but does not
 implement them.
 
-To tackle these ease-of-use, security and performance issues, this proposal explores
+To tackle these ease-of-uses, security and performance issues, this proposal explores
 algorithms and system designs for executing legacy programs within TEE securely and efficiently.
 We will use Programming Language (PL) and software co-design as well as hardware and software co-design
 to tackle the problem.

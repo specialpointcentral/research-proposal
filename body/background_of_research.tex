@@ -23,8 +23,8 @@ be implemented.
 % new Arch
 Due to overly complex operations and unacceptable hardware overhead, Intel started to move
 towards Trust Domain Extensions (TDX) \cite{Sahita2021SecurityAO, Sardar2021DemystifyingAI},
-a new trusted computing architecture introduces a separate trusted hypervisor. The interaction
-between trusted virtual machines and external untrusted environments should be checked by the
+a new trusted computing architecture that introduces a separate trusted hypervisor. The interaction
+between trusted virtual machines and external intrusted environments should be checked by the
 security check module Shim.
 
 Since TrustZone lacks confidentiality support, ARM v9 proposes Confidential Compute Architecture (CCA).
@@ -33,7 +33,7 @@ and protects users' confidential data.
 
 \subsection{Binary rewriting and binary translation}
 Binary rewriting is a technique for modifying or translating the original binary code
-without having the source code. According to their characteristics, they can be divided
+without having the source code. According to the characteristics, they can be divided
 into four categories: static, dynamic, minimal-invasive and full-translation.
 
 Static binary rewriting can use the existing information, such as static data flow analysis and
@@ -60,8 +60,8 @@ While distributed systems, such as Hadoop and Spark, are facing an increasing nu
 of threats.
 
 In 2015, the first distributed MapReduce system VC3 \cite{Schuster2015VC3TD} was proposed,
-which keeps the code and data confidential, ensures the correctness and completeness of the results.
-SGX-PySpark \cite{Quoc2019SGXPySparkSD} was implemented to protect confidential data
+which keeps the code and data confidential, and ensures the correctness and completeness of
+the results. SGX-PySpark \cite{Quoc2019SGXPySparkSD} was implemented to protect confidential data
 with the help of TEE in 2019.
 
 For other systems, such as database, EnclaveDB \cite{Priebe2018EnclaveDBAS} uses SGX to
