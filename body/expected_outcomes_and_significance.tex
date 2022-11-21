@@ -18,13 +18,13 @@ and the attack surface's expansion.
 
 Our solution uses binary rewriting to place the analyzed confidential code and data
 into enclaves, hardening the legacy software and reducing the size of TCB.
-We anticipate our system for legacy software can reach the following goals:
+We anticipate our system for general software can reach the following goals:
 \begin{enumerate}[(1)]
-    \item The analysis tool can efficiently and accurately identify vulnerable code and data.
-    Using analysis tool alone can help developers find software weaknesses and flaws.
-    \item The binary rewriting tool can rewrite legacy software into enclave-protected programs
+    \item The analysis module can efficiently and accurately identify vulnerable code and data.
+    Using analysis module alone can help developers find software weaknesses and flaws.
+    \item The binary rewriting compiler can translate legacy software into enclave-protected programs
     with the help of analysis results.
-    \item Our system is extended to support distributed legacy programs.
+    \item Our system is extended to support distributed programs.
     \item Based on the performance data, we design or modify the hardware.
     With hardware-assisted, we expect the performance can exceed other cross-platform TEEs
     or even approach the performance of native programs.

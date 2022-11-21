@@ -1,9 +1,9 @@
 \section{Research Plan and Methodology}
-\subsection{Design a tool to analyze legacy programs}
+\subsection{Design a module to analyze general programs}
 \label{sec:ToolToAnalyze}
-In order to complete the migration of a legacy system, the first step is
-to analyze the program and identify the code and data that needs to be migrated.
-We need to consider three parts: data analysis, recognition algorithm
+In order to complete the migration of a general programs, particularly legacy system,
+the first step is to analyze the program and identify the code and data that needs to
+be migrated. We need to consider three parts: data analysis, recognition algorithm
 and recognition accuracy.
 
 The first is \textbf{data analysis}. The purpose of the analysis is to provide
@@ -15,7 +15,7 @@ BIRD \cite{Nanda2006BIRDBI} uses a combination of static and dynamic identificat
 methods to improve the accuracy of the analysis. However, some trapped instructions
 need to be inserted during dynamic disassembly, which is not a good choice for us.
 Other papers indicate that static disassembly can also achieve good results
-\cite{Andriesse2016AnIA}. So we prepare to implement the static analysis tool first
+\cite{Andriesse2016AnIA}. So we prepare to implement the static analysis module first
 and then decide whether to add dynamic analysis based on the accuracy of the analysis.
 
 The next is the \textbf{recognition algorithm}.
@@ -24,7 +24,7 @@ automatic theorem proving and information flow analysis methods to discover the
 possibility of application leakage of secret information in the SGX region by
 analyzing the assembly language level of the program.
 Our work can base on Moat, and extract effective identification and verification
-algorithms from Moat, which can be used in our analysis tool.
+algorithms from Moat, which can be used in our analysis module.
 
 To evaluate \textbf{recognition accuracy}, we will consider it in two parts.
 \textit{Coverage of analysis}:
@@ -38,9 +38,9 @@ We would like to compare the results of our analysis tool with the results of th
 source code after automatic analysis by Glamdring \cite{Lind2017GlamdringAA} to obtain
 an accurate analysis.
 
-\subsection{Design a binary rewriting tool to protect confidential code and data}
+\subsection{Design a new binary rewriting compiler to protect confidential code and data}
 \label{sec:ToolToRewrite}
-With the help of an analysis tool, it is easy to obtain the code segments that need
+With the help of an analysis module, it is easy to obtain the code segments that need
 to be protected and the memory areas where vital data is located.
 
 \textbf{Code protection}. We can use the minimal-invasive translation method for
@@ -62,19 +62,19 @@ global variables are often not recommended for a highly cohesive and low-couplin
 \cite{GlobalVariablesAreBad, GlobalVariablesAreEvil},
 so dropping protection for this part when it cannot be solved is generally not a big deal.
 
-\subsection{Extend the binary rewriting tool into distributed system}
+\subsection{Extend the binary rewriting compiler into distributed system}
 \label{sec:ToolToDistributedSystem}
-Our work will explore two areas related to distributed systems, how to support legacy distributed
+Our work will explore two areas related to distributed systems, how to support general distributed
 programs and enable our system to run on distributed platforms.
 
-\textbf{Support legacy distributed programs}.
-These distributed legacy programs tend to have more complex features than ordinary programs.
+\textbf{Support distributed programs}.
+These distributed programs tend to have more complex features than ordinary programs.
 For example, OpenMP \cite{Dagum1998OpenMPAI} and MPI+OpenMP \cite{Klinkenberg2020CHAMELEONRL}
 will use mechanisms such as semaphores, message communication, etc., which cause problems
 for both the identification and transformation of our system.
 We will explore and tackle these challenges during our research process.
 
-\textbf{Tools run on distributed systems}.
+\textbf{Compiler run on distributed systems}.
 How to run our system on a distributed platform is another complex work.
 DQEMU \cite{Zhao2020DQEMUAS} achieves a distributed dynamic binary translation system.
 It discusses the implementation issues and performance optimization, including
@@ -83,7 +83,7 @@ We can take the idea of DQEMU and modify our system to run on a distributed plat
 
 \subsection{Optimize the system by software-hardware co-optimization}
 \label{sec:ToolWithOptimization}
-Whether running secret code in enclaves or using rewriting tools for transformation,
+Whether running secret code in enclaves or using rewriting compiler for transformation,
 they both introduce a significant performance overhead.
 Many studies investigated the overhead of trusted computing and
 the corresponding optimization method, including avoiding enclave switches

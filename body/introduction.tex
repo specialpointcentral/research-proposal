@@ -12,8 +12,8 @@ For example, Amazon Nitro system \cite{AmazonNitro} uses hardware-based memory
 isolation to protect data, and Azure \cite{AzureDocs} provides computing environments
 for Intel SGX and AMD SEV-SNP and confidential container computing.
 
-However, it is non-trivial to execute legacy (off-the-shelf) applications
-in a trusted execution environment with security guarantee.
+However, it is non-trivial to execute general programs, typically legacy (off-the-shelf)
+applications in a trusted execution environment with security guarantee.
 The first solution is to \textbf{rewrite the source code} and recompile it.
 Although both SGX and TrustZone provide their SDKs, it requires programmers
 to divide the trusted and intrusted parts, making it extremely difficult for
@@ -23,9 +23,9 @@ For example, Glamdring \cite{Lind2017GlamdringAA} can automatically
 split the code into intrusted and trusted parts based on tagged data.
 Unfortunately, for those programs where the source code is not available,
 using Glamdring is not feasible.
-Another solution is to use \textbf{shielding} to support legacy programs.
+Another solution is to use \textbf{shielding} to support general programs.
 For example, Occlum \cite{Shen2020OcclumSA} brings the LibOSes
-into SGX to support legacy programs. SCONE \cite{Arnautov2016SCONESL}
+into SGX to support general programs. SCONE \cite{Arnautov2016SCONESL}
 provides a secure C standard library interface that allows applications to
 run in secure containers. They both require an entire program to be run in an enclave.
 Even though shielding supports those programs where the source code is unavailable,
@@ -51,12 +51,12 @@ on modifying the hardware to speed up trusted computing but does not
 implement them.
 
 To tackle these ease-of-uses, security and performance issues, this proposal explores
-algorithms and system designs for executing legacy programs within TEE securely and efficiently.
+algorithms and system designs for executing general programs within TEE securely and efficiently.
 We will use Programming Language (PL) and software co-design as well as hardware and software co-design
 to tackle the problem.
 First, we can explore the algorithms for finding confidential code and sensitive data of
-legacy programs (Section \ref{sec:ToolToAnalyze}). Then we will use these results
-to guide the rewriting system to make legacy programs support trusted computing through
+general programs (Section \ref{sec:ToolToAnalyze}). Then we will use these results
+to guide the rewriting system to make general programs support trusted computing through
 code rewriting, binary translation or emulation (Section \ref{sec:ToolToRewrite}),
 including distributed programs (Section \ref{sec:ToolToDistributedSystem}).
 Finally, we will use the profiler to find patterns that significantly impact

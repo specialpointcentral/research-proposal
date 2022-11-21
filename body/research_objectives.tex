@@ -1,19 +1,19 @@
 \section{Research Objectives}
-As for my PhD research in trusted computing of legacy programs, the research
+As for my PhD research in trusted computing of general programs, the research
 objectives are initially expected as follows.
 \begin{enumerate}[(1)]
-    \item Design a dynamic analysis/translation tool to support legacy
-    software on trusted computing systems. This tool can be implemented
+    \item Design a new compiler to support general, especially legacy
+    software on trusted computing systems. This compiler can be implemented
     in 3 parts, and the overall structure is shown in the Figure \ref{fig:arch}.
     \begin{itemize}
-        \item Dynamic analysis of legacy software points out which parts of the code are
+        \item Dynamic analysis of general software points out which parts of the code are
         more vulnerable to attack and which data are essential and must be protected.
         \item Using the analyzed data to guide the in-place binary translation,
         insert new code segments, which are used to protect code and migrate data into enclaves.
         \item Binary translation is used for cross-instruction architecture programs. The migration
         instruction segments can be generated and added during the translation process.
     \end{itemize}
-    \item Migrate the dynamic analysis/translation tool into a distributed system.
+    \item Migrate the new compiler into a distributed system.
     \item Explore performance bottlenecks and then design or modify the hardware architecture.
     Achieve efficient operation of the entire system with the help of hardware-software
     co-optimization.
