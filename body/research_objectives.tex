@@ -10,13 +10,14 @@ objectives are initially expected as follows.
         more vulnerable to attack and which data are essential and must be protected.
         \item Using the analyzed data to guide the in-place binary translation,
         insert new code segments, which are used to protect code and migrate data into enclaves.
-        \item Binary translation is used for cross-instruction architecture programs. The migration
-        instruction segments can be generated and added during the translation process.
+        \item The binary rewriting compiler builds a trusted environment at runtime.
+        Also the migration instruction segments can be generated and added during translation process.
     \end{itemize}
-    \item Migrate the new compiler into a distributed system.
-    \item Explore performance bottlenecks and then design or modify the hardware architecture.
-    Achieve efficient operation of the entire system with the help of hardware-software
-    co-optimization.
+    \item Extend the new compiler to support distributed programs with confidentiality and integrity guarantee.
+    \item Create performance models and profilers to analyze performance bottlenecks at runtime,
+    and build new hardware primitives to fit the performance models and profiler.
+    Explore hardware-software co-optimization with the help of the profiler to
+    achieve efficient operation of the entire system.
 \end{enumerate}
 
 \begin{figure}

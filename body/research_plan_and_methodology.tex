@@ -3,10 +3,10 @@
 \label{sec:ToolToAnalyze}
 In order to complete the migration of a general programs, particularly legacy system,
 the first step is to analyze the program and identify the code and data that needs to
-be migrated. We need to consider three parts: data analysis, recognition algorithm
+be migrated. We need to consider three parts: dataflow analysis, recognition algorithm
 and recognition accuracy.
 
-The first is \textbf{data analysis}. The purpose of the analysis is to provide
+The first is \textbf{dataflow analysis}. The purpose of the analysis is to provide
 information about the binary program so that the subsequent identification process
 can proceed smoothly.
 There are many similar works in the field of binary rewriting to explore
@@ -38,7 +38,7 @@ We would like to compare the results of our analysis tool with the results of th
 source code after automatic analysis by Glamdring \cite{Lind2017GlamdringAA} to obtain
 an accurate analysis.
 
-\subsection{Design a new binary rewriting compiler to protect confidential code and data}
+\subsection{Design a new compiler to protect confidential code and data}
 \label{sec:ToolToRewrite}
 With the help of an analysis module, it is easy to obtain the code segments that need
 to be protected and the memory areas where vital data is located.

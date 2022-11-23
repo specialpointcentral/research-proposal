@@ -4,6 +4,9 @@ more and more applications are being developed for cloud platforms
 and third-party data centers. However, cloud platform applications
 often receive various threats, especially the leakage of critical data,
 which makes many companies reluctant to use the cloud platform.
+For example, ransomware attacks can steal data.
+Hackers stole 1 billion records of Chinese citizens from police.
+Also, Facebook grossly misuses user data for U.S. election.
 Fortunately, trusted computing prevents confidential violations and
 protects their applications running on shared servers.
 In recent years, cloud computing service companies supported confidential
@@ -25,10 +28,10 @@ Unfortunately, for those programs where the source code is not available,
 using Glamdring is not feasible.
 Another solution is to use \textbf{shielding} to support general programs.
 For example, Occlum \cite{Shen2020OcclumSA} brings the LibOSes
-into SGX to support general programs. SCONE \cite{Arnautov2016SCONESL}
+into SGX to support general programs without modification. SCONE \cite{Arnautov2016SCONESL}
 provides a secure C standard library interface that allows applications to
 run in secure containers. They both require an entire program to be run in an enclave.
-Even though shielding supports those programs where the source code is unavailable,
+However, shielding supports those programs where the source code is unavailable,
 putting the entire program into the enclave can increase the size of the
 Trusted Computing Base (TCB), such as Graphene \cite{Tsai2017GrapheneSGXAP}
 adding 10 kLoC to TCB.
@@ -54,11 +57,17 @@ To tackle these ease-of-uses, security and performance issues, this proposal exp
 algorithms and system designs for executing general programs within TEE securely and efficiently.
 We will use Programming Language (PL) and software co-design as well as hardware and software co-design
 to tackle the problem.
-First, we can explore the algorithms for finding confidential code and sensitive data of
+First, we will explore the algorithms for finding confidential code and sensitive data of
 general programs (Section \ref{sec:ToolToAnalyze}). Then we will use these results
-to guide the rewriting system to make general programs support trusted computing through
-code rewriting, binary translation or emulation (Section \ref{sec:ToolToRewrite}),
-including distributed programs (Section \ref{sec:ToolToDistributedSystem}).
-Finally, we will use the profiler to find patterns that significantly impact
-performance and maintain high execution efficiency with the hardware-assisted
+to guide our new compiler to make general programs support trusted computing through
+code rewriting, binary translation or emulation (Section \ref{sec:ToolToRewrite}).
+By doing so, this approach is general enough to support both general programs running within
+one process or using a distributed manner (Section \ref{sec:ToolToDistributedSystem}).
+Finally, we will create performance models for existing TEE hardware (e.g., TEE context switches)
+to capture performance bottlenecks by inserting statistical code at compile-time,
+which help the profiler to detect performance bottlenecks at runtime to generate
+performance-optimized TEE code. By doing so, we will propose new hardware primitives
+to accommodate the performance model and profiler.
+And for the performance bottlenecks identified by the profiler, we are ready to
+perform hardware and software co-optimization to achieve better performance
 (Section \ref{sec:ToolWithOptimization}).
