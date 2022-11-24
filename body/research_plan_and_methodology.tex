@@ -57,7 +57,7 @@ For local variables, we can analyze them, get the program boundary,
 and put the variables as well as code into enclaves for protection.
 PtrSplit \cite{Liu2017PtrSplitSG} focuses on identifying C/C++ pointers
 that prevent the generation of partition boundaries.
-But for global variables, there is no good solution for now. However,
+However, for global variables, there is no good solution for now. Fortunately,
 global variables are often not recommended for a highly cohesive and low-coupling system
 \cite{GlobalVariablesAreBad, GlobalVariablesAreEvil},
 so dropping protection for this part when it cannot be solved is generally not a big deal.
@@ -71,7 +71,11 @@ programs and enable our system to run on distributed platforms.
 These distributed programs tend to have more complex features than ordinary programs.
 For example, OpenMP \cite{Dagum1998OpenMPAI} and MPI+OpenMP \cite{Klinkenberg2020CHAMELEONRL}
 will use mechanisms such as semaphores, message communication, etc., which cause problems
-for both the identification and transformation of our system.
+for both the identification and transformation of our system, especially the problem of integrity protocol.
+The current solutions are using encryption RPC and \textbf{executing in lock-step} \cite{Shinde2017PanoplyLL}
+or setting up a \textbf{special protocol} \cite{Schuster2015VC3TD, Priebe2018EnclaveDBAS}.
+Each of these solutions has its problems. Lock-step execution severely affects performance,
+and special protocol is not a universal solution, which is only optimized for specific applications.
 We will explore and tackle these challenges during our research process.
 
 \textbf{Compiler run on distributed systems}.
@@ -88,7 +92,7 @@ they both introduce a significant performance overhead.
 Many studies investigated the overhead of trusted computing and
 the corresponding optimization method, including avoiding enclave switches
 \cite{Tian2018SwitchlessCM} and reducing page swaps \cite{Orenbach2017EleosEO, Taassori2018VAULTRP}.
-But these optimizations may be challenging to implement in our system because it is hard
+However, these optimizations may be challenging to implement in our system because it is hard
 to change the program's original behavior.
 In addition, binary rewriting also faces significant performance overhead, and existing
 software optimizations are limited in dealing with these issues \cite{Kim2003HardwareSF}.
