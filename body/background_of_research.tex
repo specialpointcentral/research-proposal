@@ -8,6 +8,12 @@ So, it is helpful to use Trusted Execution Environment (TEE) to protect this enc
 software and data, which provides an environment shielded from outside interference and
 the necessary mechanisms to build secure and sensitive applications.
 
+Isolation and attestation are two critical components of trusted computing.
+The code, data and runtime state in the enclave are secured by \textbf{isolating} memory,
+thus preventing access or corruption from outside the enclave.
+The legitimacy of the remote user is guaranteed through \textbf{attestation},
+including the software state measurement and hardware key signing.
+
 Intel Software Guard Extensions (SGX) is a set of security architecture extensions
 \cite{McKeen2013InnovativeIA}.
 It provides the enclave environment that prevents other software from accessing
@@ -21,15 +27,15 @@ just like a virtual machine (VM), which allows an entire trusted software stack 
 be implemented.
 
 % new Arch
-Due to overly complex operations and unacceptable hardware overhead, Intel started to move
-towards Trust Domain Extensions (TDX) \cite{Sahita2021SecurityAO, Sardar2021DemystifyingAI},
-a new trusted computing architecture that introduces a separate trusted hypervisor. The interaction
-between trusted virtual machines and external intrusted environments should be checked by the
-security check module Shim.
+% Due to overly complex operations and unacceptable hardware overhead, Intel started to move
+% towards Trust Domain Extensions (TDX) \cite{Sahita2021SecurityAO, Sardar2021DemystifyingAI},
+% a new trusted computing architecture that introduces a separate trusted hypervisor. The interaction
+% between trusted virtual machines and external intrusted environments should be checked by the
+% security check module Shim.
 
-Since TrustZone lacks confidentiality support, ARM v9 proposes Confidential Compute Architecture (CCA).
-CCA \cite{CCA} differs from TrustZone, directly supports in-memory confidentiality capabilities in hardware,
-and protects users' confidential data.
+% Since TrustZone lacks confidentiality support, ARM v9 proposes Confidential Compute Architecture (CCA).
+% CCA \cite{CCA} differs from TrustZone, directly supports in-memory confidentiality capabilities in hardware,
+% and protects users' confidential data.
 
 \subsection{Binary rewriting and binary translation}
 Binary rewriting is a technique for modifying or translating the original binary code
@@ -58,6 +64,12 @@ With the rise of cloud computing and the increase in data sets in recent years,
 more and more occasions require the use of distributed systems.
 While distributed systems, such as Hadoop and Spark, are facing an increasing number
 of threats.
+
+However, the existing TEEs, including SGX and TrustZone, only protect integrity
+and confidentiality within a single instance, which cannot protect multiple
+instances programs, such as distributed systems.
+Without any protection, communications between multiple instances can be easily
+tampered with, leading to integrity and rollback attacks.
 
 Distributed MapReduce system VC3 \cite{Schuster2015VC3TD} was proposed in 2015,
 which keeps the code and data confidential, and ensures the correctness and completeness of
