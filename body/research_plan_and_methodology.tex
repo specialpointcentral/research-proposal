@@ -1,12 +1,12 @@
 \section{Research Plan and Methodology}
 \subsection{Design a module to analyze general programs}
 \label{sec:ToolToAnalyze}
-In order to complete the migration of a general programs, particularly legacy system,
+In order to complete the migration of general programs, particularly legacy systems,
 the first step is to analyze the program and identify the code and data that needs to
 be migrated. We need to consider three parts: dataflow analysis, recognition algorithm
 and recognition accuracy.
 
-The first is \textbf{dataflow analysis}. The purpose of the analysis is to provide
+The first is \textbf{dataflow analysis}. The analysis aims to provide
 information about the binary program so that the subsequent identification process
 can proceed smoothly.
 There are many similar works in the field of binary rewriting to explore
@@ -14,7 +14,7 @@ the accuracy of binary analysis.
 BIRD \cite{Nanda2006BIRDBI} uses a combination of static and dynamic identification
 methods to improve the accuracy of the analysis. However, some trapped instructions
 need to be inserted during dynamic disassembly, which is not a good choice for us.
-Other papers indicate that static disassembly can also achieve good results
+Other papers indicate that static disassembly can achieve good results
 \cite{Andriesse2016AnIA}. So we prepare to implement the static analysis module first
 and then decide whether to add dynamic analysis based on the accuracy of the analysis.
 
@@ -30,7 +30,7 @@ To evaluate \textbf{recognition accuracy}, we will consider it in two parts.
 \textit{Coverage of analysis}:
 We will use different test cases to see how well the overall analysis is covered.
 Since we have access to the source code of these test programs,
-the coverage of the analysis can be measured by some tools such as Gcov \cite{GCOV}
+the coverage of the analysis can be measured using tools such as Gcov \cite{GCOV}
 and QEMU \cite{Bellard2005QEMUAF}.
 \textit{Correctness of the analysis}:
 We also use open-source test cases to verify correctness.
@@ -46,15 +46,15 @@ to be protected and the memory areas where vital data is located.
 \textbf{Code protection}. We can use the minimal-invasive translation method for
 code segments that need to be protected. Similar to the rev.ng \cite{Federico2017revngAU}
 and pin \cite{Luk2005PinBC}, we can insert required functions before and
-after the code segments. We insert the enclave's entry code and enclave's parameters passing code
+after the code segments. We insert the enclave's entry code and parameters passing code
 before the segments. Also, enclave's return parameters can be built at the end of the segments.
-Many more details should be noticed and considered, which need to be
+More details should be noticed and considered, which need to be
 discovered and resolved during research.
 
 \textbf{Data protection}. Data protection is more complicated than code protection,
 especially for global variables.
-For local variables, we can analyze them, get the program boundary,
-and put the variables as well as code into enclaves for protection.
+We can analyze local variables, get the program boundary, and put the
+variables and code into enclaves for protection.
 PtrSplit \cite{Liu2017PtrSplitSG} focuses on identifying C/C++ pointers
 that prevent the generation of partition boundaries.
 However, for global variables, there is no good solution for now. Fortunately,
@@ -64,13 +64,13 @@ so dropping protection for this part when it cannot be solved is generally not a
 
 \subsection{Extend the binary rewriting compiler into distributed system}
 \label{sec:ToolToDistributedSystem}
-Our work will explore two areas related to distributed systems, how to support general distributed
+Our work will explore two areas related to distributed systems, how to support generally distributed
 programs and enable our system to run on distributed platforms.
 
 \textbf{Support distributed programs}.
 These distributed programs tend to have more complex features than ordinary programs.
 For example, OpenMP \cite{Dagum1998OpenMPAI} and MPI+OpenMP \cite{Klinkenberg2020CHAMELEONRL}
-will use mechanisms such as semaphores, message communication, etc., which cause problems
+will use mechanisms such as semaphores and message communication, which cause problems
 for both the identification and transformation of our system, especially the problem of integrity protocol.
 The current solutions are using encryption RPC and \textbf{executing in lock-step} \cite{Shinde2017PanoplyLL}
 or setting up a \textbf{special protocol} \cite{Schuster2015VC3TD, Priebe2018EnclaveDBAS}.
@@ -87,13 +87,13 @@ We can take the idea of DQEMU and modify our system to run on a distributed plat
 
 \subsection{Optimize the system by software-hardware co-optimization}
 \label{sec:ToolWithOptimization}
-Whether running secret code in enclaves or using rewriting compiler for transformation,
-they both introduce a significant performance overhead.
+Whether running secret code in enclaves or using our compiler for transformation,
+they both introduce significant performance overhead.
 Many studies investigated the overhead of trusted computing and
 the corresponding optimization method, including avoiding enclave switches
 \cite{Tian2018SwitchlessCM} and reducing page swaps \cite{Orenbach2017EleosEO, Taassori2018VAULTRP}.
-However, these optimizations may be challenging to implement in our system because it is hard
-to change the program's original behavior.
+However, these optimizations may be challenging to implement because changing the program’s original
+behavior is difficult.
 In addition, binary rewriting also faces significant performance overhead, and existing
 software optimizations are limited in dealing with these issues \cite{Kim2003HardwareSF}.
 
@@ -101,6 +101,6 @@ Some studies have proposed several ideas for hardware-assisted acceleration, suc
 shared memory \cite{Jiang2022CRONUSFS}.
 So our future work will summarize the existing optimization and search the performance
 bottlenecks through performance analysis tools, such as Perf, VTune and sgx-perf \cite{Weichbrodt2018sgxperfAP}.
-After we obtain the bottlenecks of the performance, we can summarize the common characteristics
+After we obtain the performance bottlenecks, we can summarize the common characteristics
 and design or modify some hardware modules to speed up our system and programs, similar to
 the PIE \cite{Schneider2021PIEAP}.
