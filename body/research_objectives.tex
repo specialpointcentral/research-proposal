@@ -1,20 +1,19 @@
 \section{Research Objectives}
 As for my PhD research in trusted computing of general programs, the research
-objectives are initially expected as follows.
+objectives are initially expected as follows, and the overall structure is
+shown in the Figure \ref{fig:arch}.
 \begin{enumerate}[(1)]
+    \item Create an analysis system that dynamically analyzes general software
+    that identifies which parts of the code are more vulnerable to attack and
+    which data are essential and must be protected.
     \item Design a new compiler to support general, especially legacy
-    software on trusted computing systems. This compiler can be implemented
-    in 3 parts, and the overall structure is shown in the Figure \ref{fig:arch}.
-    \begin{itemize}
-        \item Dynamic analysis of general software points out which parts of the code are
-        more vulnerable to attack and which data are essential and must be protected.
-        \item Using the analyzed data to guide the in-place binary translation,
-        insert new code segments, which are used to protect code and migrate data into enclaves.
-        \item The binary rewriting compiler builds a trusted environment at runtime.
-        Also the migration instruction segments can be generated and added during translation process.
-    \end{itemize}
+    software on trusted computing systems.    
+    Using the analyzed data to guide the in-place binary translation,
+    insert new code segments, which are used to protect code and migrate data into enclaves.
+    Then the binary rewriting compiler builds a trusted environment at runtime.
+    Also the migration instruction segments can be generated and added during the translation process.
     \item Extend the new compiler to support distributed programs with confidentiality and integrity guarantee.
-    \item Create performance models and profilers to analyze performance bottlenecks at runtime,
+    \item Create performance models and profilers to analyze performance bottlenecks at runtime
     and build new hardware primitives to fit the performance models and profiler.
     Explore hardware-software co-optimization with the help of the profiler to
     achieve efficient operation of the entire system.

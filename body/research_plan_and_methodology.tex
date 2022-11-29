@@ -1,5 +1,5 @@
 \section{Research Plan and Methodology}
-\subsection{Design a module to analyze general programs}
+\subsection{Design a system to analyze general programs}
 \label{sec:ToolToAnalyze}
 In order to complete the migration of general programs, particularly legacy systems,
 the first step is to analyze the program and identify the code and data that needs to
@@ -15,7 +15,7 @@ BIRD \cite{Nanda2006BIRDBI} uses a combination of static and dynamic identificat
 methods to improve the accuracy of the analysis. However, some trapped instructions
 need to be inserted during dynamic disassembly, which is not a good choice for us.
 Other papers indicate that static disassembly can achieve good results
-\cite{Andriesse2016AnIA}. So we prepare to implement the static analysis module first
+\cite{Andriesse2016AnIA}. So we prepare to implement the static analysis system first
 and then decide whether to add dynamic analysis based on the accuracy of the analysis.
 
 The next is the \textbf{recognition algorithm}.
@@ -24,7 +24,7 @@ automatic theorem proving and information flow analysis methods to discover the
 possibility of application leakage of secret information in the SGX region by
 analyzing the assembly language level of the program.
 Our work can base on Moat, and extract effective identification and verification
-algorithms from Moat, which can be used in our analysis module.
+algorithms from Moat, which can be used in our analysis system.
 
 To evaluate \textbf{recognition accuracy}, we will consider it in two parts.
 \textit{Coverage of analysis}:
@@ -40,7 +40,7 @@ an accurate analysis.
 
 \subsection{Design a new compiler to protect confidential code and data}
 \label{sec:ToolToRewrite}
-With the help of an analysis module, it is easy to obtain the code segments that need
+With the help of an analysis system, it is easy to obtain the code segments that need
 to be protected and the memory areas where vital data is located.
 
 \textbf{Code protection}. We can use the minimal-invasive translation method for

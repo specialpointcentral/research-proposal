@@ -17,12 +17,12 @@ for Intel SGX and AMD SEV-SNP and confidential container computing.
 However, it is non-trivial to execute general programs, typically legacy (off-the-shelf)
 applications in a trusted execution environment with security guarantee.
 The first solution is to \textbf{rewrite the source code} and recompile it.
-Although both SGX and TrustZone provide SDKs to assist programing, it requires
-programmers with substantial expertise in TEE to divide the trusted and intrusted parts,
+Although both SGX and TrustZone provide SDKs to assist programming, it requires
+programmers with substantial expertise in TEE to divide the trusted and untrusted parts,
 which is a tedious and error-prone task \cite{dong2021research}. Several automated tools
 are used to assist in rewriting the source code to make this process easier.
 For example, Glamdring \cite{Lind2017GlamdringAA} can automatically
-split the code into intrusted and trusted parts based on tagged data.
+split the code into untrusted and trusted parts based on tagged data.
 Unfortunately, we often need to address software for which source code is not available,
 such as commercial databases and accounting modules. For those programs where the
 source code is not available, using Glamdring is not feasible.
@@ -58,7 +58,7 @@ loss \cite{Weichbrodt2018sgxperfAP}.
 Despite tremendous work in optimizing performance, most of their work is based on the
 software level, which only mitigates this overhead.
 
-To tackle these ease-of-uses, security and performance issues, this proposal explores
+To tackle the aforementioned ease-of-use, security, and performance issues, this proposal explores
 algorithms and system designs for executing general programs within TEE securely and efficiently.
 We will use Programming Language (PL) and software co-design as well as hardware and software co-design
 to tackle the problem.
@@ -73,6 +73,6 @@ to capture performance bottlenecks by inserting statistical code at compile-time
 which help the profiler to detect performance bottlenecks at runtime to generate
 performance-optimized TEE code. By doing so, we will propose new hardware primitives
 to accommodate the performance model and profiler.
-And for the performance bottlenecks identified by the profiler, we are ready to
+Moreover, for the performance bottlenecks identified by the profiler, we are ready to
 perform hardware and software co-optimization to achieve better performance
 (Section \ref{sec:ToolWithOptimization}).
